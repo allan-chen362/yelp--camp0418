@@ -25,7 +25,7 @@ const MongoDBStore = require("connect-mongo")(session);
 
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
 
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -61,6 +61,8 @@ const store = new MongoDBStore({
 store.on("error", function (e) {
     console.log("SESSION STORE ERROR", e)
 })
+
+
 
 const sessionConfig = {
     store,
